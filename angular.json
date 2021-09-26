@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs/swamp",
+            "outputPath": "docs",
             "resourcesOutputPath": "go",
             "index": "src/index.html",
             "main": "src/main.ts",
