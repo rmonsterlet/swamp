@@ -12,7 +12,8 @@ export class AppComponent implements AfterViewInit {
   requestId;
   interval;
   shapes: Shape[] = [];
-  value = 10;
+  size = 10;
+  speed = 400;
 
   constructor(private ngZone: NgZone) {}
 
@@ -25,6 +26,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   resizeCanvas() {
+    if(!this.ctx) return;
     this.ctx.canvas.width = window.innerWidth;
     this.ctx.canvas.height = window.innerHeight;
   }
@@ -32,7 +34,7 @@ export class AppComponent implements AfterViewInit {
   setIntervals() {
     setInterval(() => {
       this.tick();
-    }, 400);
+    }, this.speed);
     setInterval(() => {
       this.clear();
     }, 30000);
@@ -42,7 +44,7 @@ export class AppComponent implements AfterViewInit {
     const shape = new Shape(this.ctx);
     this.shapes = this.shapes.concat(shape);
     this.shapes.forEach((shape: Shape) => {
-      shape.spawnCircle(this.value);
+      shape.spawnCircle(this.size);
     });
     this.requestId = requestAnimationFrame(() => this.tick);
   }
