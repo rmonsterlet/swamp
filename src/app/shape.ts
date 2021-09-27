@@ -5,14 +5,14 @@ export class Shape {
     spawnRect() {
       const wh = Math.random()*250 + 5;
       this.ctx.fillStyle = this.color;
-      this.ctx.fillRect(Math.random() * this.ctx.canvas.width - wh, Math.random() * this.ctx.canvas.height, wh, wh);
+      this.ctx.fillRect(Math.random() * this.ctx.canvas.width, Math.random() * this.ctx.canvas.height, wh, wh);
     }
 
     spawnCircle(shapeValue) {
       const wh = Math.random()*250 + 5;
       this.ctx.beginPath();
       this.ctx.fillStyle= this.color;
-      this.ctx.arc(Math.random() * this.ctx.canvas.width - wh, Math.random() * this.ctx.canvas.height, Math.random() * shapeValue, 0, 2 * Math.PI);
+      this.ctx.arc(Math.random() * this.ctx.canvas.width, Math.random() * this.ctx.canvas.height, Math.random() * shapeValue, 0, 2 * Math.PI);
       this.ctx.fill();
     }
 

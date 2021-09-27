@@ -10,10 +10,12 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D;
   requestId;
-  interval;
+  tickInterval;
+  clearInterval;
   shapes: Shape[] = [];
-  size = 10;
-  speed = 400;
+  size = 25;
+  speed = 25;
+  tickSpeed = this.getTickSpeed();
 
   constructor(private ngZone: NgZone) {}
 
@@ -32,10 +34,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   setIntervals() {
-    setInterval(() => {
+    clearInterval(this.tickInterval);
+    clearInterval(this.clearInterval);
+    this.tickInterval = setInterval(() => {
       this.tick();
-    }, this.speed);
-    setInterval(() => {
+    }, this.getTickSpeed());
+    this.clearInterval =  setInterval(() => {
       this.clear();
     }, 30000);
   }
@@ -44,9 +48,13 @@ export class AppComponent implements AfterViewInit {
     const shape = new Shape(this.ctx);
     this.shapes = this.shapes.concat(shape);
     this.shapes.forEach((shape: Shape) => {
-      shape.spawnCircle(this.size);
+      shape.spawnCircle(this.size + 5);
     });
     this.requestId = requestAnimationFrame(() => this.tick);
+  }
+
+  getTickSpeed() {
+    return - (this.speed / 100) * 200 + 200;
   }
 
   clear() {
@@ -54,8 +62,13 @@ export class AppComponent implements AfterViewInit {
     this.ctx?.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
   }
 
+  speedChanged() {
+    this.setIntervals();
+  }
+
   destroy() {
-    clearInterval(this.interval);
+    clearInterval(this.tickInterval);
+    clearInterval(this.clearInterval);
     cancelAnimationFrame(this.requestId);
   }
 

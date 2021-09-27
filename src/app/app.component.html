@@ -1,8 +1,8 @@
 <mat-card>
-    <mat-card-title>Swamp Bubbles (by Villainous_rm)</mat-card-title>
+    <mat-card-title>Swamp Bubbles x White Night (by villainous_rm)</mat-card-title>
     <mat-card-actions>
-        Size : <mat-slider thumbLabel min="5" max="100" step="1" [(value)]="size"></mat-slider>
-        Speed : <mat-slider thumbLabel min="100" max="1000" step="10" [(value)]="speed"></mat-slider>
+        Size : <mat-slider thumbLabel min="1" max="100" step="1" [(value)]="size"></mat-slider>
+        Speed : <mat-slider thumbLabel min="1" max="100" step="1" [(value)]="speed" (change)="speedChanged()"></mat-slider>
         <button color="accent" mat-raised-button (click)="clear()">Clear</button>
     </mat-card-actions>
 </mat-card>
