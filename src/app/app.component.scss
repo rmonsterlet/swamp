@@ -1,4 +1,7 @@
-canvas { display: flex; justify-content: center; }
+canvas { 
+    justify-content: center; 
+    display: block;
+}
 
 mat-slider {
     width: 300px;

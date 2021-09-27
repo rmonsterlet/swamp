@@ -20,6 +20,13 @@ export class AppComponent implements AfterViewInit {
     this.ctx = this.canvas?.nativeElement.getContext('2d');
     this.ngZone.runOutsideAngular(() => this.tick());
     this.setIntervals();
+    window.addEventListener('resize', this.resizeCanvas, false);
+    this.resizeCanvas();
+  }
+
+  resizeCanvas() {
+    this.ctx.canvas.width = window.innerWidth;
+    this.ctx.canvas.height = window.innerHeight;
   }
 
   setIntervals() {
@@ -53,4 +60,5 @@ export class AppComponent implements AfterViewInit {
   ngOnDestroy() {
     this.destroy();
   }
+
 }
