@@ -55,7 +55,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   getTickSpeed() {
-    return - (this.speed / 100) * 1000 + 1000;
+    let _speed = this.speed;
+    return - (_speed / 100) * 900 + 1000;
   }
 
   clear() {
