@@ -12,12 +12,14 @@ export class AppComponent implements AfterViewInit {
   requestId;
   tickInterval;
   clearInterval;
+  fullRandomInterval;
   shapes: Shape[] = [];
   size = 25;
   speed = 25;
   tickSpeed = this.getTickSpeed();
   bwChecked = false;
   squaresChecked = false;
+  fullRandomChecked = false;
 
   constructor(private ngZone: NgZone) {}
 
@@ -69,9 +71,26 @@ export class AppComponent implements AfterViewInit {
     this.setIntervals();
   }
 
+  fullRandomChanged() {
+    this.fullRandomChecked = !this.fullRandomChecked;
+    if(this.fullRandomChecked) {
+      this.fullRandomInterval =  setInterval(() => {
+        this.size = Math.random() * 100;
+        this.speed = Math.random() * 100;
+        this.bwChecked = Math.random() < 0.5;
+        this.squaresChecked = Math.random() < 0.5;
+      }, 1500);
+    } 
+    else {
+      clearInterval(this.fullRandomInterval);
+    }
+  }
+  
+
   destroy() {
     clearInterval(this.tickInterval);
     clearInterval(this.clearInterval);
+    clearInterval(this.fullRandomInterval);
     cancelAnimationFrame(this.requestId);
   }
 
