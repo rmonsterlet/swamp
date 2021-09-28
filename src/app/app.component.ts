@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit {
   speed = 25;
   tickSpeed = this.getTickSpeed();
   bwChecked = false;
+  squaresChecked = false;
 
   constructor(private ngZone: NgZone) {}
 
@@ -49,7 +50,7 @@ export class AppComponent implements AfterViewInit {
     const shape = new Shape(this.ctx, this.bwChecked);
     this.shapes = this.shapes.concat(shape);
     this.shapes.forEach((shape: Shape) => {
-      shape.spawnCircle(this.size + 5);
+      (!this.squaresChecked) ? shape.spawnCircle(this.size) : shape.spawnRect(this.size);
     });
     this.requestId = requestAnimationFrame(() => this.tick);
   }

@@ -4,17 +4,17 @@ export class Shape {
       this.color = bwChecked ? this.getRandomBwColor() : this.getRandomColor();
     }
   
-    spawnRect() {
-      const wh = Math.random()*250 + 5;
+    spawnRect(size) {
+      const wh = Math.random() * size * 2;
       this.ctx.fillStyle = this.color;
       this.ctx.fillRect(Math.random() * this.ctx.canvas.width, Math.random() * this.ctx.canvas.height, wh, wh);
     }
 
-    spawnCircle(shapeValue) {
+    spawnCircle(size) {
       const wh = Math.random()*250 + 5;
       this.ctx.beginPath();
       this.ctx.fillStyle= this.color;
-      this.ctx.arc(Math.random() * this.ctx.canvas.width, Math.random() * this.ctx.canvas.height, Math.random() * shapeValue, 0, 2 * Math.PI);
+      this.ctx.arc(Math.random() * this.ctx.canvas.width, Math.random() * this.ctx.canvas.height, Math.random() * size, 0, 2 * Math.PI);
       this.ctx.fill();
     }
 
