@@ -1,6 +1,8 @@
 export class Shape {
-    private color = this.getRandomColor();
-    constructor(private ctx: CanvasRenderingContext2D) {}
+    private color; 
+    constructor(private ctx: CanvasRenderingContext2D, private bwChecked) {
+      this.color = bwChecked ? this.getRandomBwColor() : this.getRandomColor();
+    }
   
     spawnRect() {
       const wh = Math.random()*250 + 5;
@@ -16,12 +18,17 @@ export class Shape {
       this.ctx.fill();
     }
 
-    getRandomColor() {
+    private getRandomColor() {
       const letters = '0123456789ABCDEF';
       let color = '#';
       for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }
       return color;
+    }
+
+    private getRandomBwColor() {
+      var v = (Math.random()*(256)|0).toString(16);
+      return "#" + v + v + v;
     }
   }

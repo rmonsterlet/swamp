@@ -5,6 +5,7 @@
         <br>
         Speed : <mat-slider thumbLabel min="1" max="100" step="1" [(value)]="speed" (change)="speedChanged()"></mat-slider>
         <br>
+        <mat-checkbox (change)="bwChecked = !bwChecked">B&W</mat-checkbox>
         <button color="accent" mat-raised-button (click)="clear()">Clear</button>
     </mat-card-actions>
 </mat-card>

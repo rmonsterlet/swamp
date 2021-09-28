@@ -16,6 +16,7 @@ export class AppComponent implements AfterViewInit {
   size = 25;
   speed = 25;
   tickSpeed = this.getTickSpeed();
+  bwChecked = false;
 
   constructor(private ngZone: NgZone) {}
 
@@ -45,7 +46,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   tick() {
-    const shape = new Shape(this.ctx);
+    const shape = new Shape(this.ctx, this.bwChecked);
     this.shapes = this.shapes.concat(shape);
     this.shapes.forEach((shape: Shape) => {
       shape.spawnCircle(this.size + 5);
