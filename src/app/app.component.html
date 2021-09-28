@@ -1,14 +1,15 @@
 <mat-card>
     <mat-card-title>Swamp Bubbles x White Night (by villainous_rm)</mat-card-title>
     <mat-card-actions>
-        <button color="accent" mat-raised-button (click)="clear()">Clear</button>
-        <mat-slide-toggle (change)="fullRandomChanged()">Full random</mat-slide-toggle>
+        <mat-slide-toggle [disabled]="fullRandomChecked" (change)="bwChecked = !bwChecked">B&W</mat-slide-toggle>
+        <mat-slide-toggle [disabled]="fullRandomChecked" (change)="squaresChecked = !squaresChecked">Squares</mat-slide-toggle>
+        <mat-slide-toggle (change)="fullRandomChanged()">Full random</mat-slide-toggle>  
         <br>
         <mat-slider [disabled]="fullRandomChecked" thumbLabel min="1" max="100" step="1" [(value)]="size"></mat-slider>Size
+        <br>
         <mat-slider [disabled]="fullRandomChecked" thumbLabel min="1" max="100" step="1" [(value)]="speed" (change)="speedChanged()"></mat-slider>Speed
         <br>
-        <mat-slide-toggle [disabled]="fullRandomChecked" (change)="bwChecked = !bwChecked">B&W</mat-slide-toggle>
-        <mat-slide-toggle [disabled]="fullRandomChecked" (change)="squaresChecked = !squaresChecked">Squares</mat-slide-toggle>   
+        <button color="accent" mat-raised-button (click)="clear()">Clear</button>
     </mat-card-actions>
 </mat-card>
 
