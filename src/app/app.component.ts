@@ -42,7 +42,7 @@ export class AppComponent implements AfterViewInit {
     }, this.getTickSpeed());
     this.clearInterval =  setInterval(() => {
       this.clear();
-    }, 30000);
+    }, 20000);
   }
 
   tick() {
