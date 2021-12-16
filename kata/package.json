@@ -1,0 +1,14 @@
+{
+  "name": "fizzbuzz",
+  "version": "1.0.0",
+  "description": "StartupFow kata",
+  "main": "index.js",
+  "scripts": {
+    "fizzbuzz": "node fizzbuzz.js",
+    "factorial": "node factorial.js"
+  },
+  "author": "Romain Monsterlet",
+  "devDependencies": {
+    "@types/node": "^16.11.13"
+  }
+}
