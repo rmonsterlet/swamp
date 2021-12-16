@@ -71,22 +71,6 @@ export class AppComponent implements AfterViewInit {
     this.setIntervals();
   }
 
-  fullRandomChanged() {
-    this.fullRandomChecked = !this.fullRandomChecked;
-    if(this.fullRandomChecked) {
-      this.fullRandomInterval =  setInterval(() => {
-        this.size = Math.random() * 100;
-        this.speed = Math.random() * 100;
-        this.bwChecked = Math.random() < 0.5;
-        this.squaresChecked = Math.random() < 0.5;
-      }, 1500);
-    } 
-    else {
-      clearInterval(this.fullRandomInterval);
-    }
-  }
-  
-
   destroy() {
     clearInterval(this.tickInterval);
     clearInterval(this.clearInterval);
